@@ -1,6 +1,6 @@
 # LPT – eine bewiesene Garantie statt eines Beweises – Streamlit-Demo
 
-**[→ Demo live ausprobieren](#) (Deploy offen)**
+**[→ Demo live ausprobieren](https://sebastianhanisch-lpt-scheduling-demo.streamlit.app/)**
 
 Siebtes Stück der **Klassische-Scheduling-Theorie-Linie** der "Konzepte"-Reihe für die Website "Sebastian Hanisch
 – Operations Research und Machine Learning": $n$ Aufträge mit je EINER Bearbeitungszeit $p_j$, $m$ IDENTISCHE
