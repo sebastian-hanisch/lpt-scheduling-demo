@@ -35,7 +35,7 @@ def test_default_run_has_no_exception_and_shows_the_measured_default():
     assert _metric(at, "LPT (Cmax)") == "385"
     assert _metric(at, "beliebige Reihenfolge") == "+5.7 %"
     assert _metric(at, "Zufällige Reihenfolge (Mittel über 20)") == "+7.1 %"
-    assert any("LPT ist" in s.value for s in at.success)
+    assert any("über dem von LPT" in s.value for s in at.success)
 
 
 def test_switching_to_the_logistik_vehicle_actually_changes_the_main_metric():

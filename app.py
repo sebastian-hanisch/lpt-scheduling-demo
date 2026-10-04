@@ -114,7 +114,7 @@ with st.sidebar:
         st.session_state[KEPT["setup_time_slider"]] = setup_time
         seed_widget("n_families_slider")
         n_families = st.slider("Auftragsfamilien", *bounds("n_families_slider"), key="n_families_slider",
-                                help="Weniger Familien bei gleicher Auftragszahl bedeutet mehr Wechsel und damit mehr Rüstzeit insgesamt.")
+                                help="Mehr Familien bei gleicher Auftragszahl bedeuten mehr Wechsel und damit mehr Rüstzeit insgesamt.")
         st.session_state[KEPT["n_families_slider"]] = n_families
     else:
         setup_time = int(st.session_state.get(KEPT["setup_time_slider"], C.DEFAULT_SETUP_TIME))
@@ -198,10 +198,10 @@ elif a.gap_arbitrary < 0 or a.gap_random < 0:
     worse_than = "die beliebige Reihenfolge" if a.gap_arbitrary < 0 else "eine zufällige Reihenfolge"
     worst_gap = min(a.gap_arbitrary, a.gap_random)
     vehicle_hint = " (hier zusätzlich durch Rüstzeiten, die Graham nicht kennt)" if vehicle == "logistik" else ""
-    st.warning(f"⚠️ LPT schneidet hier sogar schlechter ab als {worse_than}: {abs(worst_gap):.1f} % mehr{vehicle_hint}. Kein Fehler - Grahams Garantie begrenzt den Abstand zum ECHTEN OPTIMUM (siehe CP-SAT-Feld oben), nicht den Abstand zu einer bestimmten anderen Regel auf genau dieser Instanz. Das kann auch OHNE Rüstzeiten vorkommen - anders als bei den bewiesen optimalen Regeln in Stück 1-4/6.")
+    st.warning(f"⚠️ LPT schneidet hier sogar schlechter ab als {worse_than}: Der Cmax-Wert liegt dort {abs(worst_gap):.1f} % unter dem von LPT{vehicle_hint}. Kein Fehler - Grahams Garantie begrenzt den Abstand zum ECHTEN OPTIMUM (siehe CP-SAT-Feld oben), nicht den Abstand zu einer bestimmten anderen Regel auf genau dieser Instanz. Das kann auch OHNE Rüstzeiten vorkommen - anders als bei den bewiesen optimalen Regeln in Stück 1-4/6.")
 else:
     tail = " (auch mit Rüstzeiten - bei dieser Instanz trifft LPT trotzdem das Optimum, das ist nicht garantiert)" if vehicle == "logistik" and a.optimal is not None and a.lpt_matches_optimum else ""
-    st.success(f"✅ LPT ist {a.gap_arbitrary:.1f} % besser als dieselbe Zuweisung ohne Sortierung und {a.gap_random:.1f} % besser als eine zufällige Reihenfolge{tail}.")
+    st.success(f"✅ Der Cmax-Wert liegt bei derselben Zuweisung ohne Sortierung {a.gap_arbitrary:.1f} % und bei einer zufälligen Reihenfolge {a.gap_random:.1f} % über dem von LPT{tail}.")
 
 st.markdown("---")
 
@@ -287,7 +287,7 @@ Sortierung, ohne den Zuordnungs-Algorithmus selbst zu ändern.
 
 **Warum die Sortierung hilft (Beweisskizze).** Sei $j^*$ der Auftrag, der zuletzt fertig wird. Jede Maschine war
 bis zu diesem Zeitpunkt beschäftigt, also $C_{\max} \le \bar C + p_{j^*}$ mit $\bar C$ = mittlere Last vor
-$j^*$s Zuweisung, und $\bar C \le C_{\max}^{\text{opt}} \cdot \frac{m-1}{m}$. Bei LPT ist $p_{j^*}$ klein (spät
+$j^*$s Zuweisung, und $\bar C \le C_{\max}^{\text{opt}} - \frac{p_{j^*}}{m}$. Bei LPT ist $p_{j^*}$ klein (spät
 sortiert), was die Schranke verbessert - bei beliebiger Reihenfolge kann $p_{j^*}$ selbst schon fast
 $C_{\max}^{\text{opt}}$ groß sein.
 
@@ -307,6 +307,6 @@ Timing-Messreihe, Rüstzeit-Härtetest).
 st.markdown("---")
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Scheduling-Theorie: SPT bis RCPSP](https://sebastianhanisch.net/konzepte-klassische-scheduling-theorie.html)."
 )

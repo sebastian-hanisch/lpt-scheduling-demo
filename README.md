@@ -24,20 +24,20 @@ Johnson-Regel (F2||Cmax, erste Erweiterung auf zwei Maschinen)                  
 Job Shop (Konvergenzpunkt: Reihenfolge UND serielle UND parallele Maschinen)     [Folgestück]
 ```
 
-Ergebnis in Kürze: bei 20 Aufträgen auf 3 Maschinen liegt LPT im Mittel **5,9 %** unter derselben Zuweisung ohne
-Sortierung und **6,9 %** unter einer zufälligen Reihenfolge - deutlich kleinere Margen als in Stück 1-5, weil
+Ergebnis in Kürze: bei 20 Aufträgen auf 3 Maschinen liegt der Cmax-Wert bei derselben Zuweisung ohne
+Sortierung im Mittel **5,9 %** und bei einer zufälligen Reihenfolge **6,9 %** über dem von LPT - deutlich kleinere Margen als in Stück 1-5, weil
 $C_{\max}$ (wie in Stück 6) nur vom höchstbelasteten Zweig abhängt. **Der zentrale, überraschende Befund dieses
 Stücks**: Grahams Garantie bindet nur das Verhältnis zum ECHTEN OPTIMUM, NICHT einen paarweisen Vergleich zu
 einer bestimmten anderen Regel auf einer bestimmten Instanz - **LPT kann deshalb sogar OHNE Rüstzeiten
 schlechter abschneiden als die beliebige oder eine zufällige Reihenfolge** (gemessen: n=10, m=2, Seed 19, LPT
-3,7 % schlechter als ohne Sortierung). Das war bei KEINER der bewiesen optimalen Regeln in Stück 1-4/6 möglich.
+3,8 % schlechter als ohne Sortierung). Das war bei KEINER der bewiesen optimalen Regeln in Stück 1-4/6 möglich.
 **Grahams Schranke selbst wird nie verletzt** (100 % Trefferquote über n=2..9 und m=2..4, CP-SAT-geprüft) - das
 ist der eigentliche, unverrückbare Beweis. Auf dem Werkstatt/Logistik-Vehikel wächst der Abstand zum Optimum
 zusätzlich mit der Rüstzeit (von **3,9 %** bei 0 Minuten auf **39,6 %** bei 60 Minuten je Familienwechsel).
 
 | Frage | Ergebnis (Mittel über 5 feste Instanzen, Seeds 100000–100004, mit je 3 Ketten-Seeds) |
 |---|---|
-| Standardfall (20 Aufträge, 3 Maschinen) | ✅ LPT liegt **5,9 %** unter beliebiger Reihenfolge, **6,9 %** unter Zufall |
+| Standardfall (20 Aufträge, 3 Maschinen) | ✅ Cmax liegt bei beliebiger Reihenfolge **5,9 %**, bei Zufall **6,9 %** über dem von LPT |
 | **Grahams Schranke (n=2..9, m=2..4)** | ✅ **NIE** verletzt - schlechtester beobachteter Fall bei ~91 % der Schranke |
 | **LPT kann eine falsche Regel schlagen lassen** | ❌ **Ja, auch ohne Rüstzeiten** (n=10, m=2, Seed 19: -3,7 %) - eine echte Überraschung |
 | **Vehikel Werkstatt/Logistik** | ❌ Rüstzeit 0/5/15/30/60 Minuten: **3,9/5,2/9,6/16,6/39,6 %** über dem Optimum |
@@ -151,6 +151,4 @@ pytest tests/ -v
 
 ---
 
-Teil des [Operations-Research-Demo-Portfolios](https://sebastianhanisch.net/demos.html) von
-[Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning.
-Interesse an einer maßgeschneiderten Lösung? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html).
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Scheduling-Theorie: SPT bis RCPSP](https://sebastianhanisch.net/konzepte-klassische-scheduling-theorie.html).
