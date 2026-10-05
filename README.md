@@ -30,7 +30,7 @@ $C_{\max}$ (wie in Stück 6) nur vom höchstbelasteten Zweig abhängt. **Der zen
 Stücks**: Grahams Garantie bindet nur das Verhältnis zum ECHTEN OPTIMUM, NICHT einen paarweisen Vergleich zu
 einer bestimmten anderen Regel auf einer bestimmten Instanz - **LPT kann deshalb sogar OHNE Rüstzeiten
 schlechter abschneiden als die beliebige oder eine zufällige Reihenfolge** (gemessen: n=10, m=2, Seed 19, der Cmax-Wert
-der Zuweisung ohne Sortierung 3,8 % unter dem von LPT). Das war bei KEINER der bewiesen optimalen Regeln in Stück 1-4/6 möglich.
+der Zuweisung ohne Sortierung 3,7 % unter dem von LPT). Das war bei KEINER der bewiesen optimalen Regeln in Stück 1-4/6 möglich.
 **Grahams Schranke selbst wird nie verletzt** (100 % Trefferquote über n=2..9 und m=2..4, CP-SAT-geprüft) - das
 ist der eigentliche, unverrückbare Beweis. Auf dem Werkstatt/Logistik-Vehikel wächst der Abstand zum Optimum
 zusätzlich mit der Rüstzeit (von **3,9 %** bei 0 Minuten auf **39,6 %** bei 60 Minuten je Familienwechsel).
